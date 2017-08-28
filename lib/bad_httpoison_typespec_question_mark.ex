@@ -3,16 +3,15 @@ defmodule Foo do
   Documentation for Foo.
   """
 
-  @doc """
-  Hello world.
+  @type url :: String.t()
 
-  ## Examples
+  @spec get() :: 1
+  def get() do
+    :not_1
+  end
 
-      iex> Foo.hello
-      :world
-
-  """
-  def hello do
-    :world
+  @spec get(url()) :: 1
+  def get(url) do
+    HTTPoison.get(url, [], [:async,stream_to: self()])
   end
 end
